@@ -1,11 +1,11 @@
 # Michael Onojah — AI Engineering Portfolio
 
-Self-taught AI/ML backend engineer. I build production-shaped AI systems, not just models, but the infrastructure around them: auth, rate limiting, async job queues, observability, and deployment.
+Self-taught AI/ML backend engineer. I build production-shaped AI systems — not just models, but the infrastructure around them: auth, rate limiting, async job queues, observability, and deployment.
 
 **Live capstone:** https://ai-platform-capstone.onrender.com
 **GitHub:** [github.com/HonourJAH](https://github.com/HonourJAH)
 
-This portfolio highlights 3 projects that best represent how I think about building AI systems end to end. A full list of 12 projects covering classification, feature stores, model registries, streaming, and more — is available across my [GitHub repositories](https://github.com/HonourJAH?tab=repositories).
+This profile highlights 4 projects that best represent how I think about building AI systems end to end. A full list of 12 projects — covering classification, feature stores, streaming, and more — is available across my [GitHub repositories](https://github.com/HonourJAH?tab=repositories).
 
 ---
 
@@ -22,15 +22,29 @@ A unified, production-shaped inference gateway that combines text classification
 - A cloud-vs-local backend toggle (Ollama/local Qdrant/local embeddings for full local dev; Groq/Qdrant Cloud/Cohere for a memory-lean free-tier deployment) — same codebase, two real environments
 - CI that builds the actual Docker image and health-checks it against real Postgres and Redis, not just running unit tests in isolation
 
-**The debugging is the actual story here.** The README documents every real bug hit and fixed along the way: a Celery worker that silently deadlocked forever the first time it touched a loaded PyTorch model (forking a process after PyTorch's threading locks were held), a race condition where a job could start processing before its own database row existed, an adapter that generated its own job ID instead of the one already committed — causing jobs to "succeed" in logs while the client polled a permanently stuck record and hitting Render's 512MB free-tier ceiling with two ML models loaded in-process, solved by moving embeddings and generation to cloud APIs rather than compromising the design.
+**The debugging is the actual story here.** The README documents every real bug hit and fixed along the way: a Celery worker that silently deadlocked forever the first time it touched a loaded PyTorch model (forking a process after PyTorch's threading locks were held), a race condition where a job could start processing before its own database row existed, an adapter that generated its own job ID instead of the one already committed — causing jobs to "succeed" in logs while the client polled a permanently stuck record — and hitting Render's 512MB free-tier ceiling with two ML models loaded in-process, solved by moving embeddings and generation to cloud APIs rather than compromising the design.
 
 **Stack:** FastAPI, Celery, Redis, PostgreSQL, Qdrant, Prometheus, Grafana, Docker, PyTorch, scikit-learn, Groq, Cohere
 
 ---
 
-## 2. [AI Agent API](https://github.com/HonourJAH/ai-agent-api)
+## 2. [MLOps Pipeline API](https://github.com/HonourJAH/mlops-pipeline-api)
 
-A tool-using AI agent exposed as an API. The agent can reason about a request, decide which tool to invoke, execute it, and incorporate the result into its response, all streamed back to the client in real time.
+An end-to-end MLOps pipeline covering the full model lifecycle: train, evaluate, promote, and serve — with champion/challenger promotion so a new model has to prove itself against the current production model before it takes over.
+
+**What it demonstrates:**
+- MLflow-based experiment tracking and model registry, using champion/challenger promotion via aliases (not the deprecated stage-based API)
+- A promotion gate: a newly trained model is only promoted to "champion" if it actually outperforms the current one on held-out evaluation data — no promotion by default
+- CI that smoke-tests the full train → promote → predict cycle, not just isolated unit tests, catching integration failures between pipeline stages
+- Dockerized end to end, so the whole pipeline — training job, registry, and serving endpoint — runs the same way locally and in CI
+
+**Stack:** FastAPI, MLflow, scikit-learn, Docker, CI/CD
+
+---
+
+## 3. [AI Agent API](https://github.com/HonourJAH/ai-agent-api)
+
+A tool-using AI agent exposed as an API — the agent can reason about a request, decide which tool to invoke, execute it, and incorporate the result into its response, all streamed back to the client in real time.
 
 **What it demonstrates:**
 - Real tool use: a calculator, a sandboxed code executor, and live web search (via Tavily), invoked by the LLM's own reasoning rather than hardcoded routing
@@ -42,7 +56,7 @@ A tool-using AI agent exposed as an API. The agent can reason about a request, d
 
 ---
 
-## 3. [RAG API](https://github.com/HonourJAH/rag-api)
+## 4. [RAG API](https://github.com/HonourJAH/rag-api)
 
 A Retrieval-Augmented Generation service: upload documents, have them chunked and embedded, and ask questions answered strictly from the retrieved context — with the model explicitly instructed to say when it doesn't know, rather than hallucinate.
 
