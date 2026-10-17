@@ -1,12 +1,21 @@
-# Michael Onojah — Data Analytics Portfolio
+# Hi, I'm Michael 👋
 
----
-## My analytics tools/skils:
-### SQL, Python, Web Scrapping, Excel, Power BI
----
+Entry-level data analyst building end-to-end SQL projects on messy, real-world data. Electrical and Electronics Engineering graduate (Federal University of Technology Akure), based in Nigeria and open to remote roles.
 
-## About Me
+## What I'm working on
 
-B.Eng. Electrical & Electronics Engineering, Federal University of Technology Akure. Self-taught Data Analyst — portfolio-driven rather than employment-history-driven, with a focus on solving business problems through business' data analysis.
+**[Online Retail Sales Analysis](https://github.com/HonourJAH/online-retail-sales-analysis)**: profiling and cleaning 541,910 retail transactions in MySQL, with every excluded row flagged by reason and every decision documented, followed by business questions on sales, returns, products and customers. *In progress.*
 
-**Contact:** [LinkedIn](https://www.linkedin.com/in/friday-onojah-9a5698219/) · [GitHub](https://github.com/HonourJAH)
+## Toolkit
+
+- **Analysis:** SQL (MySQL), Excel, Power BI, Python (pandas)
+- **Practice:** data profiling, auditable cleaning, reconciling results at every step
+- **Workflow:** Git and GitHub
+
+## Also built
+
+**[Production AI Platform](https://github.com/HonourJAH/ai-platform-capstone)**: a FastAPI service combining text and image classification, retrieval-augmented generation and LLM chat behind one endpoint.
+
+## Find me
+
+- LinkedIn: [friday-onojah](https://www.linkedin.com/in/friday-onojah-9a5698219/)
