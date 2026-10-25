@@ -4,11 +4,11 @@ Entry-level data analyst building end-to-end SQL projects on messy, real-world d
 
 ## Featured project
 
-**[Online Retail Sales Analysis](https://github.com/HonourJAH/online-retail-sales-analysis)**: profiled and cleaned 541,910 retail transactions in MySQL, with every excluded row flagged by reason and every decision documented, then answered ten business questions on sales, returns, products, countries, customers, segmentation (RFM) and retention. *Complete.*
+**[Online Retail Sales Analysis](https://github.com/HonourJAH/online-retail-sales-analysis)**: profiled and cleaned 541,910 retail transactions in MySQL, with every excluded row flagged by reason and every decision documented, then answered ten business questions on sales, returns, products, countries, customers, segmentation (RFM) and retention, and presented the results in a four-page Power BI dashboard. *Complete.*
 
 ## Toolkit
 
-- **Analysis:** SQL (MySQL), Excel, Power BI, Python (pandas)
+- **Analysis:** SQL (MySQL), Power BI, Excel, Python (pandas)
 - **Practice:** data profiling, auditable cleaning, reconciling results at every step
 - **Workflow:** Git and GitHub
 
